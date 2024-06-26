@@ -7,44 +7,53 @@
 
 import SwiftUI
 
+
 struct MenuView: View {
     var body: some View {
         NavigationStack{
             VStack{
-            
+                
+                List{
                     
-                // Envuelve el NavigationLink en un Button para tener más control sobre su estilo.
-                    Button(action: {
-                        // Acción a realizar cuando se presiona el botón.
-                        // En este caso, activa el NavigationLink.
-                    }) {
-                        // Contenido del botón.
-                        NavigationLink(destination: IMCView()) {
-                            Text("IMC Calculadora")
-                                // Aplica estilos directamente al texto.
-                                .padding() // Añade padding alrededor del texto.
-                                .font(.title)
-                                .bold()
-                                .background(.backgrounComponent) // Fondo azul.
-                               .foregroundColor(.white) // Texto blanco.
-                               .cornerRadius(16) // Borde redondeado.
-                               .shadow(radius: 8) // Sombra con radio de 8.
-                               
-                        }
-                    }
-                    // Ajusta el padding del botón.
-                   .padding()
+                    NavigationLink(destination: IMCView()) {
+                        Label("IMC Calculadora", systemImage: "checkmark")
+                            .foregroundColor(.white).opacity(0.85)
+                            .padding(.vertical,16)
+                            .bold()
+                                                       
+                    }.font(.title2).listRowBackground(Color.black).padding(.top,20)
+                    
+                    NavigationLink(destination: BuscadorSuperHeroes()) {
+                     
+                        Label("Súper Heroes API", systemImage: "checkmark")
+                            .foregroundColor(.white).opacity(0.85)
+                            .bold()
+                            
+                                                                                   
+                    }.font(.title2).listRowBackground(Color.black).padding(.top,5)
+
+
+                    
+                }.listStyle(.plain).background(.black)
+
+                    
+
+
+
                 
             }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
-                .background(.backgroundApp)
                 .toolbar{
-                    ToolbarItem(placement: .principal){
-                        Text("Menú Apps")
+                    ToolbarItem(placement: .topBarLeading){
+                        Text("Lista de Apps")
                             .foregroundColor(.white)
-                            .bold()
                             .font(.largeTitle)
+                            .bold()
+                            .padding(.vertical,20)
                     }
+                    
                 }
+                
+                
 
         }
     }
