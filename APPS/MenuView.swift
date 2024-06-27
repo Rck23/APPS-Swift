@@ -21,7 +21,7 @@ struct MenuView: View {
                             .padding(.vertical,16)
                             .bold()
                                                        
-                    }.font(.title2).listRowBackground(Color.black).padding(.top,20)
+                    }.font(.title2).listRowBackground(Color.black)
                     
                     NavigationLink(destination: BuscadorSuperHeroes()) {
                      
@@ -30,7 +30,7 @@ struct MenuView: View {
                             .bold()
                             
                                                                                    
-                    }.font(.title2).listRowBackground(Color.black).padding(.top,5)
+                    }.font(.title2).listRowBackground(Color.black)
 
 
                     
@@ -43,12 +43,12 @@ struct MenuView: View {
                 
             }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
                 .toolbar{
-                    ToolbarItem(placement: .topBarLeading){
+                    ToolbarItem(placement: .principal){
                         Text("Lista de Apps")
                             .foregroundColor(.white)
                             .font(.largeTitle)
                             .bold()
-                            .padding(.vertical,20)
+                            .padding(.vertical,10)
                     }
                     
                 }

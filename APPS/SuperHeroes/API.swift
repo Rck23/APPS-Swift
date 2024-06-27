@@ -19,8 +19,15 @@ class ApiNet {
     struct SuperHero:Codable, Identifiable{
         let id:String
         let name:String
+        let image:ImagenSuperHero
+    }
+    
+    struct ImagenSuperHero:Codable{
+        let url:String
+        
         
     }
+
     
     // Función asíncrona que busca superhéroes por consulta.
     // Toma una consulta como entrada y devuelve una promesa de Props.
@@ -34,6 +41,55 @@ class ApiNet {
         let propiedades = try JSONDecoder().decode(Props.self, from: data)
         // Retorna las propiedades decodificadas.
         return propiedades
+    }
+    
+    
+    func getHeroeById (id:String) async throws ->SuperHeroeCompleto{
+        let url = URL(string:"https://superheroapi.com/api/7d778dab16ce8006a10062e68b8f4096/\(id)")!
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        
+        return try JSONDecoder().decode(SuperHeroeCompleto.self, from: data)
+        
+
+    }
+    
+    struct SuperHeroeCompleto:Codable {
+        let id:String
+        let name:String
+        let image:ImagenSuperHero
+        let powerstats:Powerstats
+        let biography:Biography
+        let appearance:Appearance
+
+    }
+    
+    struct Powerstats:Codable{
+        let intelligence:String
+        let strength:String
+        let speed:String
+        let durability:String
+        let power:String
+        let combat:String
+    }
+    
+    struct Appearance:Codable{
+        let race: String
+    }
+    
+    struct Biography:Codable{
+        let aliases:[String]
+        let publisher:String
+        let alignment:String
+        let fullName:String
+        
+        enum CodingKeys:String, CodingKey{
+            case fullName = "full-name"
+            case aliases = "aliases"
+            case publisher = "publisher"
+            case alignment = "alignment"
+        }
+            
     }
     
 }

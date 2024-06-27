@@ -14,19 +14,22 @@ struct BuscadorSuperHeroes: View {
     
     @State var props:ApiNet.Props? = nil
     
+    @State var cargando:Bool = false
+    
     var body: some View {
         VStack{
             
             TextField("", text: $superHeroeNombre, prompt: Text("Buscar héroe...").font(.title2).bold().foregroundColor(.gray))
-                .foregroundColor(.white)
+                .foregroundColor(.backgroundAPITextSecondary)
                 .font(.title2)
                 .bold()
                 .padding(16)
-                .border(.purple, width: 4)
+                .border(.backgroundAPITextPrimary, width: 5)
                 .cornerRadius(10)
                 .padding(10)
                 .autocorrectionDisabled()
                 .onSubmit {
+                    cargando = true
                     print(superHeroeNombre)
                     
                     Task{
@@ -36,18 +39,28 @@ struct BuscadorSuperHeroes: View {
                             print("ERROR!")
 
                         }
+                        cargando = false
                     }
-                    
                     
                 }
             
-            List(props?.results ?? []){
-                superheroe in SuperHeroeItem(superheroe: superheroe)
-            }.listStyle(.plain)
+            if cargando{
+                ProgressView().tint(.backgroundAPITextPrimary).frame(width: 200, height: 200)
+            }
+            NavigationStack{
+                List(props?.results ?? []){superheroe in
+                    
+                    ZStack{
+                        SuperHeroeItem(superheroe: superheroe)
+                        NavigationLink(destination: SuperHeroeDetalles(id: superheroe.id)){EmptyView()}.opacity(0)
+                    }.listRowBackground(Color.backgroundAPI)
+                    
+                }.listStyle(.plain)
             
+            }
             Spacer()
             
-        }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity).background(.backgroundApp)
+        }.frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity).background(.backgroundAPI)
     }
 }
 
@@ -55,18 +68,25 @@ struct SuperHeroeItem:View {
     let superheroe: ApiNet.SuperHero
     var body: some View {
         ZStack{
-            Rectangle()
+            
+            WebImage(url: URL(string: superheroe.image.url))
+                .resizable()
+                .indicator(.activity)
+                .scaledToFill()
+                .frame(height: 200)
             
             VStack{
                 Spacer()
                 Text(superheroe.name)
                     .foregroundStyle(.white)
+                    .font(.title2)
                     .bold()
                     .padding()
                     .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                    .background(.white.opacity(0.3))
+                    .background(.backgroundAPITextPrimary.opacity(0.5))
             }
-        }.frame(height: 200).cornerRadius(20).background(.backgroundApp)
+        }.frame(height: 200)
+            .cornerRadius(16)
     }
 }
 
