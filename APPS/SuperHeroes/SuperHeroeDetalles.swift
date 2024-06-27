@@ -16,6 +16,8 @@ struct SuperHeroeDetalles: View {
     @State var superheroe: ApiNet.SuperHeroeCompleto? = nil
     @State var cargando: Bool = true
     
+    @State private var isOpen: Bool = false
+    
     var body: some View {
         VStack{
             
@@ -25,10 +27,10 @@ struct SuperHeroeDetalles: View {
                 WebImage(url: URL(string: superheroe.image.url))
                     .resizable()
                     .scaledToFill()
-                    .frame(height: 270)
+                    .frame(height: 250)
                     .clipped()
                     .cornerRadius(16)
-                    .padding(10)
+                    .padding(.horizontal, 10)
                     
                 HStack{
                     
@@ -37,7 +39,7 @@ struct SuperHeroeDetalles: View {
                         .foregroundColor(.backgroundAPITextPrimary)
                     
                     Text("'\(superheroe.appearance.race)'")
-                        .font(.system(size: 20))
+                        .font(.system(size: 22))
                         .italic()
                         .foregroundColor(.backgroundAPITextSecondary)
                 }
@@ -46,16 +48,29 @@ struct SuperHeroeDetalles: View {
                     .font(.title2)
                     .foregroundColor(.black)
 
-                
                 Text(superheroe.biography.publisher)
                     .bold().font(.title2)
                     .foregroundColor(.black).underline().padding(.bottom,3).italic()
-
-                ForEach(superheroe.biography.aliases, id: \.self){alias in
-                    Text(alias).font(.title3).foregroundColor(.backgroundAPITextSecondary).italic()
-                }
+                
                 
                 SuperheroEstadisticas(stats: superheroe.powerstats)
+                
+                
+                    Button {
+                        isOpen.toggle()
+                    } label: {
+                        Text("Más información...")
+                            .font(.title3)
+                            .bold()
+                        
+                    }.sheet(isPresented: $isOpen){
+                        ModalHeroView(id: id, isOpen: $isOpen)
+                        //.presentationDetents([.medium, .large])
+                } .padding()
+                    .background(.backgroundAPITextSecondary)
+                    .foregroundColor(.white)
+                    .clipShape(Capsule())
+                    
                 Spacer()
                 
             }
@@ -115,15 +130,15 @@ struct SuperheroEstadisticas:View {
 
             }
             
-        }.padding(16)
-            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 300)
+        }.padding(8)
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: 380)
             .background(.backgroundAPI)
             .cornerRadius(16)
-            .padding(10)
+            .padding(.horizontal, 10)
     }
 }
 
 
 #Preview {
-    SuperHeroeDetalles(id: "70")
+    SuperHeroeDetalles(id: "63")
 }

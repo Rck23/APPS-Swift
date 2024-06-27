@@ -61,6 +61,8 @@ class ApiNet {
         let powerstats:Powerstats
         let biography:Biography
         let appearance:Appearance
+        let work:Work
+        let connections:Connections
 
     }
     
@@ -74,6 +76,7 @@ class ApiNet {
     }
     
     struct Appearance:Codable{
+        let gender: String
         let race: String
     }
     
@@ -82,14 +85,35 @@ class ApiNet {
         let publisher:String
         let alignment:String
         let fullName:String
+        let placeOfBirth:String
+        let firstAppearance:String
         
         enum CodingKeys:String, CodingKey{
             case fullName = "full-name"
             case aliases = "aliases"
             case publisher = "publisher"
             case alignment = "alignment"
+            case placeOfBirth = "place-of-birth"
+            case firstAppearance = "first-appearance"
         }
             
+    }
+    
+    struct Work:Codable{
+        let occupation:String
+        let base:String
+    }
+    
+    struct Connections:Codable{
+        let relatives:String
+        let groupAffiliation:String
+        
+        
+        enum CodingKeys:String, CodingKey{
+            case groupAffiliation = "group-affiliation"
+            case relatives = "relatives"
+            
+        }
     }
     
 }
