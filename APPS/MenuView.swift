@@ -16,7 +16,7 @@ struct MenuView: View {
                 List{
                     
                     NavigationLink(destination: IMCView()) {
-                        Label("IMC Calculadora", systemImage: "checkmark")
+                        Label("IMC Calculadora", systemImage: "heart.text.square.fill")
                             .foregroundColor(.white).opacity(0.85)
                             .padding(.vertical,16)
                             .bold()
@@ -25,8 +25,19 @@ struct MenuView: View {
                     
                     NavigationLink(destination: BuscadorSuperHeroes()) {
                      
-                        Label("Súper Heroes API", systemImage: "checkmark")
+                        Label("Súper Heroes API", systemImage: "gamecontroller.fill")
                             .foregroundColor(.white).opacity(0.85)
+                            .padding(.vertical,16)
+                            .bold()
+                            
+                                                                                   
+                    }.font(.title2).listRowBackground(Color.black)
+                    
+                    NavigationLink(destination: LugaresView()) {
+                     
+                        Label("Lugares", systemImage: "mappin.circle.fill")
+                            .foregroundColor(.white).opacity(0.85)
+                            .padding(.vertical, 16)
                             .bold()
                             
                                                                                    

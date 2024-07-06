@@ -10,6 +10,9 @@
 		380A20A62C2BBEA000F2E3E9 /* BuscadorSuperHeroes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380A20A52C2BBEA000F2E3E9 /* BuscadorSuperHeroes.swift */; };
 		380A20A82C2BC4BE00F2E3E9 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380A20A72C2BC4BE00F2E3E9 /* API.swift */; };
 		380A20AB2C2BE79600F2E3E9 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 380A20AA2C2BE79600F2E3E9 /* SDWebImageSwiftUI */; };
+		382412EA2C37499600F81D66 /* LugaresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382412E92C37499600F81D66 /* LugaresView.swift */; };
+		382412ED2C374B7600F81D66 /* Lugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382412EC2C374B7600F81D66 /* Lugar.swift */; };
+		382412EF2C374C9C00F81D66 /* DialogoCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382412EE2C374C9C00F81D66 /* DialogoCustom.swift */; };
 		38597EDB2C2F9F150030A0DE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38597EDA2C2F9F150030A0DE /* MapView.swift */; };
 		386AC30C2C28E5C200CEA86A /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386AC30B2C28E5C200CEA86A /* ListView.swift */; };
 		389D9FA82C2D385C00F20665 /* ModalHeroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389D9FA72C2D385C00F20665 /* ModalHeroView.swift */; };
@@ -26,6 +29,9 @@
 /* Begin PBXFileReference section */
 		380A20A52C2BBEA000F2E3E9 /* BuscadorSuperHeroes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscadorSuperHeroes.swift; sourceTree = "<group>"; };
 		380A20A72C2BC4BE00F2E3E9 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		382412E92C37499600F81D66 /* LugaresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LugaresView.swift; sourceTree = "<group>"; };
+		382412EC2C374B7600F81D66 /* Lugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lugar.swift; sourceTree = "<group>"; };
+		382412EE2C374C9C00F81D66 /* DialogoCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogoCustom.swift; sourceTree = "<group>"; };
 		38597EDA2C2F9F150030A0DE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		386AC30B2C28E5C200CEA86A /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		389D9FA72C2D385C00F20665 /* ModalHeroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalHeroView.swift; sourceTree = "<group>"; };
@@ -57,6 +63,7 @@
 			children = (
 				386AC30B2C28E5C200CEA86A /* ListView.swift */,
 				38597EDA2C2F9F150030A0DE /* MapView.swift */,
+				382412EE2C374C9C00F81D66 /* DialogoCustom.swift */,
 			);
 			path = Componentes;
 			sourceTree = "<group>";
@@ -70,6 +77,23 @@
 				38BE30112C2D0144007173CF /* SuperHeroeDetalles.swift */,
 			);
 			path = SuperHeroes;
+			sourceTree = "<group>";
+		};
+		382412E82C37498000F81D66 /* Lugares */ = {
+			isa = PBXGroup;
+			children = (
+				382412E92C37499600F81D66 /* LugaresView.swift */,
+				382412EB2C374B5500F81D66 /* models */,
+			);
+			path = Lugares;
+			sourceTree = "<group>";
+		};
+		382412EB2C374B5500F81D66 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				382412EC2C374B7600F81D66 /* Lugar.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 		38F654542C226D8B00CFA7F4 = {
@@ -91,6 +115,7 @@
 		38F6545F2C226D8B00CFA7F4 /* APPS */ = {
 			isa = PBXGroup;
 			children = (
+				382412E82C37498000F81D66 /* Lugares */,
 				380A20A42C2BBE8D00F2E3E9 /* SuperHeroes */,
 				3806AD4A2C28E18800D336F2 /* Componentes */,
 				38F6546E2C226E0200CFA7F4 /* IMC */,
@@ -198,12 +223,15 @@
 			files = (
 				38F654632C226D8B00CFA7F4 /* MainView.swift in Sources */,
 				38F654722C226E4600CFA7F4 /* MenuView.swift in Sources */,
+				382412ED2C374B7600F81D66 /* Lugar.swift in Sources */,
+				382412EA2C37499600F81D66 /* LugaresView.swift in Sources */,
 				38BE30122C2D0144007173CF /* SuperHeroeDetalles.swift in Sources */,
 				38597EDB2C2F9F150030A0DE /* MapView.swift in Sources */,
 				386AC30C2C28E5C200CEA86A /* ListView.swift in Sources */,
 				380A20A62C2BBEA000F2E3E9 /* BuscadorSuperHeroes.swift in Sources */,
 				38E2835B2C26207B00A65846 /* IMCResultado.swift in Sources */,
 				38F654702C226E1300CFA7F4 /* IMCView.swift in Sources */,
+				382412EF2C374C9C00F81D66 /* DialogoCustom.swift in Sources */,
 				380A20A82C2BC4BE00F2E3E9 /* API.swift in Sources */,
 				389D9FA82C2D385C00F20665 /* ModalHeroView.swift in Sources */,
 				38F654612C226D8B00CFA7F4 /* APPSApp.swift in Sources */,
